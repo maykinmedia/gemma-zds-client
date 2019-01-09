@@ -41,7 +41,7 @@ def mock_client(responses: dict):
     try:
         json_string = json.dumps(responses).encode('utf-8')
         md5 = hashlib.md5(json_string).hexdigest()
-        name = f"MockClient{md5}"
+        name = "MockClient{}".format(md5)
         # create the class
         type(name, (MockClient,), {'responses': responses})
         dotted_path = f'{__name__}.{name}'
